@@ -3,11 +3,11 @@
 #include <vector>
 #include <functional>
 
-#define contract contract _;
-#define pre(...) _.precondition([&]{ return __VA_ARGS__; }, #__VA_ARGS__)
-#define cond(...) _.condition([&]{ return __VA_ARGS__; }, #__VA_ARGS__)
-#define post(...) _.postcondition([&]{ return __VA_ARGS__; }, #__VA_ARGS__)
-#define old(x) auto old_#x = x
+#define contract contract_t _{};
+#define pre(...) _.precondition([&]{ return __VA_ARGS__; }, #__VA_ARGS__);
+#define cond(...) _.condition([&]{ return __VA_ARGS__; }, #__VA_ARGS__);
+#define post(...) _.postcondition([&]{ return __VA_ARGS__; }, #__VA_ARGS__);
+#define old(x) auto old_#x = x;
 
 // a contract will generally look like this for the simple case:
 /*
