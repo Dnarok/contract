@@ -1,1 +1,3 @@
-add_subdirectory(spdlog)
+if (NOT TARGET spdlog::spdlog)
+	add_subdirectory(spdlog)
+endif()
