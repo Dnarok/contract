@@ -9,6 +9,21 @@
 #define post(...) _.postcondition([&]{ return __VA_ARGS__; }, #__VA_ARGS__);
 #define old(x) auto old_#x = x;
 
+// debug-only versions of the above
+#ifdef NDEBUG
+#define debug_contract  (void(0))
+#define debug_pre(...)  (void(0))
+#define debug_cond(...) (void(0))
+#define debug_post(...) (void(0))
+#define debug_old(x)    (void(0))
+#else
+#define debug_contract contract
+#define debug_pre(...) pre(__VA_ARGS__)
+#define debug_cond(...) cond(__VA_ARGS__)
+#define debug_post(...) post(__VA_ARGS__)
+#define debug_old(x) old(x)
+#endif
+
 // a contract will generally look like this for the simple case:
 /*
 struct nonzero
